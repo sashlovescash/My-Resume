@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishita Shome - Professional Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #2a2f4f;
+            --secondary: #917fb3;
+            --accent: #fde2f3;
+            --text: #333;
+            --light-text: #666;
+            --background: #fff;
+            --card-bg: #f9f9f9;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Animated background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .animated-bg .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px) translateX(10px) rotate(180deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(0) translateX(0) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        /* Animated lines */
+        .lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            margin: auto;
+            width: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .lines .line {
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            background: rgba(145, 127, 179, 0.1);
+            overflow: hidden;
+        }
+
+        .lines .line::after {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 15vh;
+            width: 100%;
+            top: -50%;
+            left: 0;
+            background: linear-gradient(to bottom, rgba(145, 127, 179, 0) 0%, var(--secondary) 75%, var(--secondary) 100%);
+            animation: run 7s 0s infinite;
+            animation-fill-mode: forwards;
+            animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+        }
+
+        .lines .line:nth-child(1) {
+            margin-left: -30%;
+        }
+        .lines .line:nth-child(1)::after {
+            animation-delay: 2s;
+        }
+
+        .lines .line:nth-child(2) {
+            margin-left: -15%;
+        }
+        .lines .line:nth-child(2)::after {
+            animation-delay: 0.5s;
+        }
+
+        .lines .line:nth-child(3) {
+            margin-left: 0%;
+        }
+        .lines .line:nth-child(3)::after {
+            animation-delay: 1.5s;
+        }
+
+        .lines .line:nth-child(4) {
+            margin-left: 15%;
+        }
+        .lines .line:nth-child(4)::after {
+            animation-delay: 3s;
+        }
+
+        .lines .line:nth-child(5) {
+            margin-left: 30%;
+        }
+        .lines .line:nth-child(5)::after {
+            animation-delay: 0s;
+        }
+
+        @keyframes run {
+            0% {
+                top: -50%;
+            }
+            100% {
+                top: 110%;
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: var(--background);
+            clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-title {
+            font-family: 'Montserrat', serif;
+            font-size: 4.5rem; /* Increased font size */
+            font-weight: 300; /* Changed to thin/light */
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            letter-spacing: 2px; /* Increased spacing */
+        }
+
+        .profile-subtitle {
+            font-family: 'Montserrat', cursive;
+            font-size: 1.8rem; /* Made font smaller */
+            font-weight: 700; /* Made font bold */
+            margin-bottom: 20px;
+            opacity: 0.8; /* Decreased transparency slightly */
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .profile-description {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .skill {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+
+        .skill:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-family: 'Montserrat', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin: 50px 0 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: fadeSlideIn 0.8s ease forwards;
+            animation-play-state: paused;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            transform: translateX(50px);
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--secondary);
+            border: 4px solid var(--primary);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-date {
+            font-family: 'Montserrat', cursive;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-family: 'Montserrat', serif;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .timeline-company {
+            font-size: 1rem;
+            color: var(--light-text);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .timeline-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .timeline-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .timeline-skill {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .timeline-skill:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            margin-top: 100px;
+            position: relative;
+            z-index: 2;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: var(--background);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 50%);
+        }
+
+        footer h2 {
+            font-family: 'Montserrat', serif;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-title {
+                font-size: 2.5rem;
+            }
+
+            .profile-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .skills-container {
+                justify-content: center;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .portfolio-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .download-button:hover {
+            background-color: var(--secondary);
+        }
+
+        .download-button i {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg" id="animated-bg"></div>
+    
+    <!-- Animated Lines -->
+    <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    
+    <header>
+        <div class="container profile-container">
+            <div class="profile-info">
+                <h1 class="profile-title">ISHITA SHOME</h1>
+                <h2 class="profile-subtitle">Creative Strategist & Brand Consultant</h2>
+                <p class="profile-description">Visionary brand strategist and creative powerhouse with a sharp eye for design, digital marketing, and business growth. A natural leader, I’ve built and scaled brands, led high-impact teams, and mastered AI-driven content creation to stay ahead of the curve. Now seeking a managerial role where I can blend strategy, innovation, and leadership to create something extraordinary.</p>
+                
+                <div class="skills-container">
+                    <span class="skill">Adobe Creative Suite</span>
+                    <span class="skill">UI Design</span>
+                    <span class="skill">Social Media Strategy</span>
+                    <span class="skill">Content Strategy</span>
+                    <span class="skill">Copywriting</span>
+                    <span class="skill">Visual Communication</span>
+                    <span class="skill">Project Management</span>
+                    <span class="skill">AI-Driven Content Creation</span>
+                    <span class="skill">B2B & B2C Marketing</span>
+                    <span class="skill">Growth Strategy</span>
+                    <span class="skill">Leadership & Team Management</span>
+                    <span class="skill">Art Direction</span>
+                    <span class="skill">Campaign Development</span>
+                    <span class="skill">UI & Experience Design</span>
+                    <span class="skill">Business Development</span>
+                    <span class="skill">Trend Forecasting</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title">Professional Experience</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Mar 2024 - Present</div>
+                    <h3 class="timeline-title">Multimedia Designer</h3>
+                    <div class="timeline-company">Audacix · Remote · Australia</div>
+                    <div class="timeline-description">Joining Audacix, a leading tech company, as a Multimedia Designer became a pivotal chapter in my career. While initially focused on social media and LinkedIn content, including static posts and video editing, I soon expanded my role by contributing to growth strategies and initiating new brand sections. I collaborated with organizations to enhance brand visibility, strengthening B2B communication and business strategy execution under the guidance of the CEO.
+
+                        This role also deepened my expertise in leveraging AI tools, from image and content generation to coding and website development, allowing me to push creative and operational boundaries. Beyond technical skills, I refined essential soft skills, particularly patience and strategic thinking, making this experience a true stepping stone toward greater opportunities.</div>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Multimedia Design</span>
+                        <span class="timeline-skill">Video Editing</span>
+                        <span class="timeline-skill">Social Media Strategy</span>
+                        <span class="timeline-skill">AI-Driven Content Creation</span>
+                        <span class="timeline-skill">B2B Communication</span>
+                        <span class="timeline-skill">Growth Strategy</span>
+                        <span class="timeline-skill">Brand Visibility Enhancement</span>
+                        <span class="timeline-skill">Collaboration & Partnerships</span>
+                        <span class="timeline-skill">Business Development</span>
+                        <span class="timeline-skill">Strategic Thinking</span>
+                        <span class="timeline-skill">Leadership Adaptability</span>
+                        <span class="timeline-skill">Patience</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Sep 2024 - Oct 2024</div>
+                    <h3 class="timeline-title">Creative Designer</h3>
+                    <div class="timeline-company">RAWWgear · Freelance · United States</div>
+                    <div class="timeline-description">At RAWWgear, a USA-based workout gear startup, I worked closely with the CEO and team to design social media creatives, website banners, and product visuals. This project helped me reconnect with hands-on design work, refining my graphic design skills while contributing to the brand’s visual identity across multiple platforms.</div>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Graphic Design</span>
+                        <span class="timeline-skill">Product Visualization</span>
+                        <span class="timeline-skill">Website Banner Design</span>
+                        <span class="timeline-skill">Social Media Content Creation</span>
+                        <span class="timeline-skill">Brand Asset Development</span>
+                        <span class="timeline-skill">Direct Client Coordination</span>
+                        <span class="timeline-skill">Creative Execution</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Jan 2024 - Jun 2024</div>
+                    <h3 class="timeline-title">Graphic Designer</h3>
+                    <div class="timeline-company">RenB Digital · Freelance · Remote</div>
+                    <div class="timeline-description">As a freelance graphic designer at RenB Digital, I worked across three distinct brands, collaborating with a brand manager to deliver weekly creatives for both B2B and B2C markets. This role allowed me to refine my graphic design skills, ensuring I stayed sharp in visual storytelling, brand consistency, and creative execution while adapting designs to diverse brand identities.</div>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Graphic Design</span>
+                        <span class="timeline-skill">Brand Adaptation</span>
+                        <span class="timeline-skill">B2B & B2C Marketing Creatives</span>
+                        <span class="timeline-skill">Visual Storytelling</span>
+                        <span class="timeline-skill">Creative Strategy</span>
+                        <span class="timeline-skill">Collaboration with Brand Managers</span>
+                        <span class="timeline-skill">Consistency in Design Execution</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Apr 2024 - May 2024</div>
+                    <h3 class="timeline-title">Content Editor</h3>
+                    <div class="timeline-company">Klarecon · Freelance · Israel</div>
+                    <div class="timeline-description">At Klarecon, I worked as a freelance content editor, refining and fine-tuning written content to enhance clarity, coherence, and impact. This role sharpened my content writing, editing, and language precision skills, further refining my ability to craft compelling and polished narratives.</div>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Content Editing</span>
+                        <span class="timeline-skill">Copy Refinement</span>
+                        <span class="timeline-skill">Language Precision</span>
+                        <span class="timeline-skill">Writing Enhancement</span>
+                        <span class="timeline-skill">Attention to Detail</span>
+                        <span class="timeline-skill">Storytelling</span>
+                        <span class="timeline-skill">Content Structuring</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Jul 2023 - Mar 2024, Present</div>
+                    <h3 class="timeline-title">Creative Manager</h3>
+                    <div class="timeline-company">Darshanam · Full-time · India</div>
+                    <div class="timeline-description">At Darshanam, I led a diverse creative team, including graphic designers, interns, a photographer, a video editor, an illustrator, and freelancers, while closely collaborating with developers and the sales team. I managed branding, packaging design, product design, website updates, and marketing assets, ensuring seamless execution across all creative projects. While guiding the team, I also took a hands-on approach to copywriting, content creation, and campaign strategies. With complete creative freedom, I applied every skill I had honed over the years. Although the company later transitioned into a bootstrapped model, I continue to be associated as a freelancer overseeing external creatives.</div>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Creative Direction</span>
+                        <span class="timeline-skill">Packaging Design</span>
+                        <span class="timeline-skill">Product Design</span>
+                        <span class="timeline-skill">Website Content Management</span>
+                        <span class="timeline-skill">Team & Freelancer Management</span>
+                        <span class="timeline-skill">Sales & Development Team Coordination</span>
+                        <span class="timeline-skill">High-Level Brand Strategy</span>
+                        <span class="timeline-skill">Full-Spectrum Copywriting</span>
+                        <span class="timeline-skill">Multi-Channel Marketing</span>
+                        <span class="timeline-skill">End-to-End Campaign Execution</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Jan 2022 - Jan 2024</div>
+                    <h3 class="timeline-title">Senior Project Manager</h3>
+                    <div class="timeline-company">EWheelie Electro Universe Pvt. Ltd · Freelance · India</div>
+                    <p class="timeline-description">Over my two-year journey with eWheelie, I played a key role in its transformation from a startup to a fully established brand. Leading the rebranding efforts, I collaborated with a cross-functional design team—including copywriters, social media managers, graphic and motion designers, and website developers—to create cohesive brand assets. I also spearheaded social media strategy, boosting engagement, while managing offline marketing through posters, banners, pamphlets, and essential corporate documents like PDFs and presentations.</p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Project Management</span>
+                        <span class="timeline-skill">Cross-functional Collaborations</span>
+                        <span class="timeline-skill">Team Leadership</span>
+                        <span class="timeline-skill">Brand Strategy Coordination</span>
+                        <span class="timeline-skill">Remote Team Communication</span>
+                        <span class="timeline-skill">Content & Design Alignment</span>
+                        <span class="timeline-skill">Social Media Strategy Execution</span>
+                        <span class="timeline-skill">Multi-Department Coordination</span>
+                        <span class="timeline-skill">Campaign Planning</span>
+                        <span class="timeline-skill">Offline & Online Marketing Asset Management</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Jan 2023 - Jul 2023</div>
+                    <h3 class="timeline-title">Senior Design Manager</h3>
+                    <div class="timeline-company">Helplyn Inc. · Part-time · California, United States</div>
+                    <div class="timeline-description">Managed a team of 3 designers, 2 copywriters and 2 interns, overseeing design projects from ideation to execution. Led the design team in creating engaging visual content for social media, marketing campaigns, and website design, resulting in a 30% increase in user engagement. I led the branding and marketing asset development for two successful startups under Helplyn—GoRN and StaffGrid. My role included brand identity creation, corporate assets, PDF presentations, and social media content. I collaborated with the communication and marketing teams, driving continuous social media engagement and high-volume email outreach, ensuring strong brand positioning in a competitive market.</div>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Brand Identity Design</span>
+                        <span class="timeline-skill">Marketing Asset Creation</span>
+                        <span class="timeline-skill"> Corporate Design</span>
+                        <span class="timeline-skill">PDF & Presentation Design</span>
+                        <span class="timeline-skill">Social Media Engagement</span>
+                        <span class="timeline-skill">Email Outreach</span>  
+                        <span class="timeline-skill">Brand Positioning</span>
+                        <span class="timeline-skill">Remote Team Management</span>
+                        <span class="timeline-skill">Communication Design</span>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Nov 2022 - Jan 2023</div>
+                    <h3 class="timeline-title">Brand Communication Executive</h3>
+                    <div class="timeline-company">Pouvoir By Dont Call me Princess · Full-time · Surat, India</div>
+                    <div class="timeline-description">After proving my ability to shape and execute brand strategies, I was promoted to Brand Communication Executive, where I led a team of five creatives—including a graphic designer, motion designer, copywriter, and two interns. I managed two brands simultaneously within the marketing agency, overseeing everything from brand communication strategy and visual identity to client-facing meetings and campaign execution. This role strengthened my expertise in social media strategy, art direction for photography and advertisements, team coordination, and high-pressure problem-solving. With clients from various industries, I mastered adaptability, branding nuances, and seamless communication across diverse platforms.
+                    </div>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Team Leadership</span>
+                        <span class="timeline-skill">Brand Strategy</span>
+                        <span class="timeline-skill">Social Media Management</span>
+                        <span class="timeline-skill">Client Communication</span>
+                        <span class="timeline-skill">Campaign Execution</span>
+                        <span class="timeline-skill">Advertisement Direction</span>
+                        <span class="timeline-skill">Copywriting</span>
+                        <span class="timeline-skill">Motion Graphics Coordination</span>
+                        <span class="timeline-skill">High-Pressure Problem-Solving</span>
+                        <span class="timeline-skill">Multi-Brand Management</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Aug 2022 - Nov 2022</div>
+                    <h3 class="timeline-title">Content Visualiser</h3>
+                    <div class="timeline-company">Pouvoir By Dont Call me Princess · Full-time</div>
+                    <div class="timeline-description">I joined Pouvoir by Don’t Call Me Princess as a Content Visualizer, where I managed and created a wide range of visual assets for the brand. As a startup, the role required me to develop a diverse skill set, working on everything from groundwork to set design, art direction, branding, and brand communication strategy. I was deeply involved in photo editing, styling shoots, and designing marketing materials, ensuring the brand's visual identity aligned with its vision. This role pushed me into multi-disciplinary creativity, blending strategic thinking with hands-on execution.</div>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Adobe Creative Suite</span>
+                        <span class="timeline-skill">Art Direction</span>
+                        <span class="timeline-skill">Set Design</span>
+                        <span class="timeline-skill">Photo Editing</span>
+                        <span class="timeline-skill">Branding</span>
+                        <span class="timeline-skill">Visual Communication</span> 
+                        <span class="timeline-skill">Styling & Shoot Coordination</span>
+                        <span class="timeline-skill">Graphic Design</span>
+                        <span class="timeline-skill">Brand Communication Strategy</span>
+                        <span class="timeline-skill">Marketing Collateral Design</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Jan 2022 - May 2022</div>
+                    <h3 class="timeline-title">Summer Intern</h3>
+                    <div class="timeline-company">Tulsi Fabrics India Pvt. Ltd. · Internship · Surat, India</div>
+                    <div class="timeline-description">At Tulsi Fabrics, I completed my graduation project in textile design, developing two seasonal collections from concept to execution. I honed my skills in textile design, creating patterns for upcoming collections and refining existing designs. I worked closely with the design team to understand market trends, develop new patterns, and create digital mockups for client presentations. I was actively involved in research and development, assisting senior designers while using Adobe Creative Suite to create and refine new textile patterns. My work primarily focused on surface embellishments, incorporating techniques like mirror work and sequins to enhance fabric aesthetics. This experience deepened my understanding of textile applications in the fashion industry and enhanced my proficiency in Adobe Creative Suite.</div>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Textile Design</span>
+                        <span class="timeline-skill">Surface Embellishment</span>
+                        <span class="timeline-skill">Adobe Creative Suite</span>
+                        <span class="timeline-skill">Market Research</span>
+                        <span class="timeline-skill">Digital Mockups</span>
+                        <span class="timeline-skill">Pattern Development</span> 
+                        <span class="timeline-skill">Client Presentations</span>
+                        <span class="timeline-skill">Fashion Industry</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Nov 2021 - Jan 2022</div>
+                    <h3 class="timeline-title">Project Intern</h3>
+                    <div class="timeline-company">World Vastra · Internship · Remote</div>
+                    <div class="timelime-description">At World Vastra, I transitioned from textile design to digital marketing asset creation, leveraging my Adobe Creative Suite and visual communication skills. This is where my copywriting journey began, as I took charge of branding, social media strategy, and content creation. I developed the brand’s aesthetic identity, designed social media posts, stories, and website banners, and curated engaging offers and campaigns. Additionally, I applied my Photoshop skills to create new patterns for upcoming dress collections, blending creativity with market-driven design.</div>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Adobe Creative Suite</span>
+                        <span class="timeline-skill">Visual Communication</span>
+                        <span class="timeline-skill">Digital Marketing</span>
+                        <span class="timeline-skill">Social Media Content Creation</span>
+                        <span class="timeline-skill">Copywriting</span>
+                        <span class="timeline-skill">Communication Strategy</span>
+                        <span class="timeline-skill">Branding</span>
+                        <span class="timeline-skill">Graphic Design</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Jun 2021 - Aug 2021</div>
+                    <h3 class="timeline-title">Design Internship</h3>
+                    <div class="timeline-company">Design Gaatha · Internship · New Delhi, India</div>
+                    <p class="timeline-description">At Design Gaatha, I worked as a textile designer, creating Moroccan and Middle Eastern patterns for home décor essentials like sofa covers, bed sheets, table runners, and kitchen textiles. My role involved extensive R&D on traditional motifs and materials, contributing to the design process for upcoming seasonal collections, and collaborating with the team to refine patterns for production. This experience sharpened my eye for detail and deepened my understanding of textile applications in home décor.</p>
+                    <div class="timeline-skills">
+                        <span class="timeline-skill">Trend Forecasting</span>
+                        <span class="timeline-skill">Research & Development</span>
+                        <span class="timeline-skill">Adobe Creative Suite</span>
+                        <span class="timeline-skill">Digital & Hand Sketching</span>
+                        <span class="timeline-skill">Textile Design</span>
+                        <span class="timeline-skill">Visual Communication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2018 - 2022</div>
+                    <h3 class="timeline-title">Bachelor of Design (Apparel & Textiles)</h3>
+                    <div class="timeline-company">National Institute of Fashion Technology, India</div>
+                    <div class="timeline-description">Skills: Microsoft Office, Color Theory, Creativity, Adobe Creative Suite</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2016 - 2018</div>
+                    <h3 class="timeline-title">Higher Secondary (Science)</h3>
+                    <div class="timeline-company">Narayana Institute</div>
+                    <div class="timeline-description">Grade: 70% | Skills: Microsoft Office, Microsoft PowerPoint</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2011 - 2016</div>
+                    <h3 class="timeline-title">Secondary Education (General Studies)</h3>
+                    <div class="timeline-company">Army Public School</div>
+                    <div class="timeline-description">Grade: 10 CGPA | Skills: Microsoft Office, Microsoft PowerPoint</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="container">
+        <h2 class="section-title">Languages</h2>
+        <div class="skills-container">
+            <span class="skill">English (Fluent)</span>
+            <span class="skill">Hindi (Fluent)</span>
+            <span class="skill">Bengali (Native)</span>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ishitashome99@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91-7047091460</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Remote Professional</span>
+                </div>
+            </div>
+            <div class="portfolio-container">
+                <a href="Portfolio-ISHITA SHOME.pdf" download class="download-button">
+                    <i class="fas fa-download"></i> Download Portfolio
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating particles
+        const animatedBg = document.getElementById('animated-bg');
+        const particleCount = 20;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            // Random position
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+
+            // Random size
+            const size = Math.random() * 30 + 10;
+
+            // Random animation delay
+            const delay = Math.random() * 5;
+
+            particle.style.left = `${posX}%`;
+            particle.style.top = `${posY}%`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.animationDelay = `${delay}s`;
+
+            animatedBg.appendChild(particle);
+        }
+
+        // Intersection Observer for timeline animations
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
